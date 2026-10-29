@@ -2,6 +2,10 @@
 
 An interactive short story about an abandoned amusement park, a failing computer, and the things a person chooses to remember.
 
+[Play the public demo](https://last-witness-erlik-1417.erlik35.chatgpt.site)
+
+The public demo is the archive edition: keyword routing, no model inference, and browser-local progress. The local edition below uses Ollama with an open-weight model.
+
 Fourteen story fragments. Seven questions. Each answer preserves one record in your notebook while a different record disappears from the witness. At the end, you write the only account that will survive. Bellwether Park and its characters are fictional.
 
 ## Run
@@ -48,6 +52,16 @@ node dist/server.js
 The model check requires a running Ollama instance with `qwen2.5:3b` installed, or the `MODEL` environment variable set to another compatible installed model. It verifies direct questions, paraphrases, unrelated questions, and a removed record against real inference. The main test suite uses a local mock model server to test inference errors and concurrent requests without requiring model weights.
 
 The build copies the application into `dist/`. This game requires its Node server for model routing and authoritative state; it is not a static-only site. Port 4177 must be free before starting another copy.
+
+## Design
+
+## Public demo build
+
+```sh
+npm run build:public
+```
+
+This produces the browser-only archive edition in `dist/`. Serve that directory with a static web host. Run `npm run build` to produce the local Node edition again. The public build reuses the same engine and story, with browser storage replacing the local server.
 
 ## Design
 
