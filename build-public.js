@@ -1,0 +1,23 @@
+import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+
+const output = new URL('./public-dist/', import.meta.url);
+await mkdir(output, { recursive: true });
+for (const file of ['style.css', 'memories.js', 'engine.js', 'browser-api.js']) await copyFile(new URL(file, import.meta.url), new URL(file, output));
+let app = await readFile(new URL('./app.js', import.meta.url), 'utf8');
+const apiStart = app.indexOf('async function api(endpoint, body) {');
+const apiEnd = app.indexOf('\nasync function checkModels()', apiStart);
+if (apiStart < 0 || apiEnd < 0) throw new Error('The public adapter could not find the connection boundary.');
+app = "import { publicApi } from './browser-api.js';\n" + app.slice(0, apiStart) + 'async function api(endpoint, body) { return publicApi(endpoint, body); }\n' + app.slice(apiEnd);
+app = app.replace("await fetch('/api/status').then(response => response.json())", 'await Promise.resolve({ models: [], ready: false })');
+app = app.replace('No local model was found. Play the complete handwritten story in archive mode, or start Ollama with a model installed and check again.', 'This public demo uses keyword matching and the complete prewritten story. For local open-weight AI inference, download the source from GitHub and run it with Ollama.');
+app = app.replace('AUTHORED ARCHIVE / NO AI INFERENCE', 'PUBLIC DEMO / ARCHIVE EDITION / NO AI INFERENCE');
+let html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
+html = html.replace('href="/style.css"', 'href="./style.css"').replace('src="/app.js"', 'src="./app.js"').replace('href="/"', 'href="./"');
+html = html.replace('<title>Last Witness — A Bellwether Recording</title>', '<title>Last Witness — Public Demo</title>');
+html = html.replace('Local inference keeps the conversation on your computer. The archive edition uses keyword matching and the same handwritten story; it does not use AI.', 'Public demo: the complete archive edition, using keyword matching without AI inference. Your progress stays in this browser. The local Qwen edition is available in the GitHub repository.');
+html = html.replace('<p class="duration">', '<p class="public-edition">PUBLIC DEMO · ARCHIVE EDITION · <a href="https://github.com/Erlik-1417/lastwitness" target="_blank" rel="noopener noreferrer">SOURCE & LOCAL AI EDITION ↗</a></p><p class="duration">');
+await writeFile(new URL('app.js', output), app);
+await writeFile(new URL('index.html', output), html);
+await writeFile(new URL('.nojekyll', output), '');
+await writeFile(new URL('style.css', output), (await readFile(new URL('style.css', output), 'utf8')) + '\n.public-edition{font:9px/1.8 var(--mono);color:var(--muted);max-width:400px;margin-top:18px}.public-edition a{color:var(--green);text-underline-offset:4px}\n');
+console.log('Built public archive demo in public-dist/.');
