@@ -53,8 +53,6 @@ The model check requires a running Ollama instance with `qwen2.5:3b` installed, 
 
 The build copies the application into `dist/`. This game requires its Node server for model routing and authoritative state; it is not a static-only site. Port 4177 must be free before starting another copy.
 
-## Design
-
 ## Public demo build
 
 ```sh
