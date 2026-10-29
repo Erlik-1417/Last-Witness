@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181c18">
+  <meta name="description" content="Seven questions. A place disappearing. An interactive story about what we choose to remember.">
+  <title>Last Witness — A Bellwether Recording</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="/" aria-label="Last Witness home"><span class="mark">lw<span>·</span></span><span>THE BELLWETHER<br>RECORDINGS</span></a>
+    <div class="header-note">AN INTERACTIVE SHORT STORY<br><span>EST. 1978 — CLOSED 2009</span></div>
+    <button id="sound-toggle" class="sound-toggle" aria-pressed="false" aria-label="Enable ambient sound"><span class="sound-bars"><i></i><i></i><i></i><i></i></span><span id="sound-label">SOUND OFF</span></button>
+  </header>
+  <main>
+    <section id="intro" class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="live-dot"></span> ONE LAST CONNECTION</p>
+        <h1>Some things<br>only exist<br>if we <em>remember.</em></h1>
+        <p class="intro-description">A closed amusement park. A computer left running.<br>Fourteen memories, and just enough power for seven questions.</p>
+        <div class="intro-rule"><span>01—07</span><p>Ask seven questions. Save what matters.<br>Everything you leave behind will disappear.</p></div>
+        <ol class="intro-instructions"><li>Choose a glowing point on the park map.</li><li>Send its suggested question, or write your own.</li><li>Keep the answer. Lose another memory. Leave a final record.</li></ol>
+        <button id="begin" class="primary">Enter the control room <span>↗</span></button>
+        <p class="duration">8–10 MINUTES <span>·</span> HEADPHONES, IF YOU HAVE THEM</p>
+      </div>
+      <div class="intro-art" aria-label="An abandoned amusement park represented by a weathered admission ticket">
+        <div class="art-cross cross-one">+</div><div class="art-cross cross-two">+</div>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="ticket"><div class="ticket-top"><span>KEEP THIS PART</span><span>№ 000001</span></div><div class="ticket-title">BELL<br>WETHER<span>PARK & PLEASURE GARDENS</span></div><div class="ticket-wheel"><div></div><i></i><b></b></div><div class="ticket-bottom"><strong>ADMIT ONE</strong><span>A whole afternoon.<br>As long as you like.</span></div><div class="ticket-stub">NOT VALID AFTER THE LAST LIGHT GOES OUT</div></div>
+        <span class="art-caption">FOUND IN THE CONTROL ROOM, NOVEMBER 2009</span>
+        <span class="art-coordinate">51° 28′ N<br>01° 12′ W</span>
+      </div>
+      <div class="intro-bottom"><span>LAST WITNESS</span><span>A SMALL STORY ABOUT LEAVING SOMETHING BEHIND.</span><span>VOL. 001</span></div>
+    </section>
+    <section id="setup" class="setup hidden" aria-labelledby="setup-heading">
+      <p class="eyebrow">BEFORE YOU GO IN</p><h2 id="setup-heading">There is someone<br>still <em>in there.</em></h2>
+      <p>The park has been empty for years. Its computer, Keeper, is running on the last of an emergency battery. You can speak to it seven times.</p>
+      <p>Your task is to preserve the park’s story before the power dies. Select a glowing point on the map to fill in a question, then press Ask Keeper. You can also write a question of your own.</p>
+      <p>Each question uses one of your seven turns. A remembered answer goes into your notebook; a different, unheard memory is erased. Read your saved notes at any time. After the seventh question, use them to write the final record. There is no score and no perfect ending.</p>
+      <div class="connection-box"><div><span class="live-dot"></span><strong id="connection-title">Checking the local connection</strong></div><p id="connection-description">Looking for an open-weight model on this computer.</p><label id="model-label" class="hidden">LOCAL MODEL<select id="model-select"></select></label><div class="connection-actions"><button id="refresh-models" class="text-button">Check again ↻</button><button id="archive-choice" class="text-button">Use the authored archive instead</button></div></div>
+      <p class="mode-note" id="mode-note">Local inference keeps the conversation on your computer. The archive edition uses keyword matching and the same handwritten story; it does not use AI.</p>
+      <button id="connect" class="primary" disabled>Open the connection <span>↗</span></button><button id="back-intro" class="text-button back">← Back outside</button>
+    </section>
+    <section id="game" class="game hidden" aria-label="The control room">
+      <div class="game-heading"><div><p class="eyebrow">BELLWETHER PARK / CONTROL ROOM</p><h2>Last <em>Witness.</em></h2></div><div class="power"><span>QUESTIONS REMAINING</span><div id="power-cells" class="power-cells"></div><p><strong id="questions-left">07</strong><span> / 07</span></p></div></div>
+      <div class="play-guide"><div><span class="eyebrow">YOUR TASK</span><p>Save a few pieces of Bellwether before the power goes out.</p></div><ol><li><span>1</span> Choose a lit point</li><li><span>2</span> Ask Keeper</li><li><span>3</span> Read your saved note</li></ol><button id="how-to-play" class="text-button">How to play ↗</button></div>
+      <div class="workspace">
+        <aside class="park-panel"><div class="panel-caption"><span>01 / THE GROUNDS</span><span id="map-count">14 SIGNALS</span></div><div class="park-map" id="park-map"><svg viewBox="0 0 400 380" aria-hidden="true"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 20" fill="none" stroke="currentColor" stroke-width=".4"/></pattern></defs><rect width="400" height="380" fill="url(#grid)" opacity=".32"/><path class="river" d="M385 -10 Q320 100 365 180 T335 390 M402 -10 Q337 100 382 180 T352 390"/><path class="map-path" d="M75 280 Q115 250 108 170 T195 160 T290 95 M108 170 Q70 120 55 65 M195 160 Q255 180 250 210 T325 245 M195 160 Q145 90 185 75 M75 280 Q140 270 160 320 Q220 310 240 275 T325 245"/><g class="wheel-drawing"><circle cx="288" cy="90" r="43"/><circle cx="288" cy="90" r="5"/><path d="M288 47V133 M245 90H331 M258 60L318 120 M258 120L318 60 M288 90L265 155H310Z"/></g><g class="carousel-drawing"><ellipse cx="195" cy="175" rx="35" ry="12"/><path d="M160 175V155L195 130L230 155V175 M160 155H230 M180 155V180 M210 155V180 M195 130V118"/></g><path class="building-drawing" d="M40 55H75V80H40Z M95 120H125V145H95Z M315 235H343V260H315Z M220 260H255V280H220Z M140 310H170V335H140Z"/><text x="16" y="365">BELLWETHER / SITE PLAN 1978</text><text x="350" y="30">N ↑</text></svg><div id="map-nodes"></div><div class="map-stamp">CLOSED<br><span>UNTIL FURTHER NOTICE</span></div></div><p class="map-hint">Touch a signal to find a question.<br>Hollow marks are all that remain.</p><div class="map-legend"><span><i class="legend-available"></i> STILL HERE</span><span><i class="legend-rescued"></i> IN YOUR CARE</span><span><i class="legend-lost"></i> GONE</span></div><div class="selected-memory" id="selected-memory"><span class="eyebrow">A PLACE TO START</span><p>“What did they call this place?”</p></div></aside>
+        <section class="transmission-panel"><div class="panel-caption"><span>02 / THE CONNECTION</span><span class="keeper-status"><i></i><span id="keeper-status">KEEPER IS LISTENING</span></span></div><div id="transcript" class="transcript" role="log" aria-live="polite"></div><div id="loss-notice" class="loss-notice" role="status"></div><form id="question-form" class="question-form"><label for="question">WHAT WOULD YOU LIKE TO REMEMBER?</label><div class="question-input"><textarea id="question" rows="2" maxlength="280" placeholder="Ask Keeper a question…" required></textarea><button type="submit" id="ask" aria-label="Send your question">↗</button></div><div class="form-bottom"><span id="input-hint">Take your time. The battery only drains when you ask.</span><span id="character-count">0 / 280</span></div></form><div id="finish-prompt" class="finish-prompt hidden"><p>There is no power for another question.<br>There is enough for one last thing.</p><button id="write-memorial" class="primary">Leave a record <span>↗</span></button></div></section>
+        <aside class="notebook-panel"><div class="panel-caption"><span>03 / YOUR NOTEBOOK</span><span id="saved-count">0 SAVED</span></div><div class="notebook-heading"><span>Things worth<br><em>keeping.</em></span><span class="notebook-star">✳</span></div><div id="notebook" class="notebook"><div class="notebook-empty"><span>01.</span><p>Nothing here yet.<br>Listen closely.</p></div></div><div class="notebook-footer">THESE WILL STAY.<br>EVEN AFTER THE POWER GOES.</div></aside>
+      </div><div class="game-footer"><span id="edition-label">LOCAL CONNECTION</span><span>EVERYTHING YOU SAVE IS SOMETHING THE WORLD GETS TO KEEP.</span><button id="restart" class="text-button">Start a new recording ↗</button></div>
+    </section>
+    <section id="memorial" class="memorial hidden"><p class="eyebrow">THE LAST THING ON THE BATTERY</p><h2>What will you<br><em>tell them?</em></h2><p class="memorial-intro">Keeper cannot hold on any longer. You can.<br>Leave a few words about the place you found.</p><div id="memorial-fragments" class="memorial-fragments"></div><form id="memorial-form"><label for="memorial-text">FOR WHOEVER FINDS THIS NEXT</label><textarea id="memorial-text" maxlength="2400" rows="6" placeholder="There was a place called…" required></textarea><p class="memorial-note">Your words become the final record. They stay in this browser unless you download them.</p><button class="primary" type="submit">Leave the record. Turn out the light. <span>↗</span></button></form></section>
+    <section id="ending" class="ending hidden"><p class="eyebrow">CONNECTION CLOSED / RECORD PRESERVED</p><h2>Someone<br><em>was here.</em></h2><div class="ending-record"><div class="panel-caption"><span>BELLWETHER PARK</span><span>FINAL RECORD</span></div><p id="final-words"></p><div class="record-signature">RECORDED BY THE LAST WITNESS.<br><span id="ending-date"></span></div></div><p id="ending-count" class="ending-count"></p><p class="last-line">“Thank you. I think I can turn the lamp off now.”</p><div class="ending-actions"><button id="download" class="primary">Keep a copy <span>↓</span></button><button id="play-again" class="text-button">Someone else is still out there. Begin again ↗</button></div></section>
+  </main>
+  <dialog id="help-dialog"><p class="eyebrow">KEEPER CAN ONLY ANSWER SEVEN TIMES</p><h3>What do you want to save?</h3><ol class="help-steps"><li><strong>Choose a memory.</strong> Click a glowing point on the map. A question appears in the writing box. Clicking alone does not spend a turn.</li><li><strong>Press Ask Keeper.</strong> Read the answer in the middle panel. One question uses one turn, including questions Keeper cannot answer.</li><li><strong>Open your notebook.</strong> Click a saved title on the right to unfold its note and document. These memories are safe.</li><li><strong>Watch what disappears.</strong> A different unheard memory is erased after each question. Its point goes dark. You cannot bring it back.</li><li><strong>Leave a record.</strong> After seven questions, write a few lines about what you discovered. You can add saved fragments and download the result.</li></ol><p>You are choosing what survives, rather than trying to find a correct answer.</p><button id="close-help" class="primary">I’m ready to listen <span>↗</span></button></dialog>
+  <dialog id="restart-dialog"><p class="eyebrow">A DIFFERENT AFTERNOON</p><h3>Begin another recording?</h3><p>Your current session will be replaced. Download your final record first if you want to keep it.</p><div><button id="cancel-restart" class="text-button">Stay here</button><button id="confirm-restart" class="primary">Begin again ↗</button></div></dialog>
+  <div id="error-toast" class="error-toast hidden" role="alert"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
