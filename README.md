@@ -2,7 +2,7 @@
 
 An interactive short story about an abandoned amusement park, a failing computer, and the things a person chooses to remember.
 
-[Play the public demo](https://last-witness-erlik-1417.erlik35.chatgpt.site)
+[Play the public demo](https://lastwitness-erlik.vercel.app)
 
 The public demo is the archive edition: keyword routing, no model inference, and browser-local progress. The local edition below uses Ollama with an open-weight model.
 
