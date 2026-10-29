@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 
-const output = new URL('./public-dist/', import.meta.url);
+const output = new URL('./dist/', import.meta.url);
 await mkdir(output, { recursive: true });
 for (const file of ['style.css', 'memories.js', 'engine.js', 'browser-api.js']) await copyFile(new URL(file, import.meta.url), new URL(file, output));
 let app = await readFile(new URL('./app.js', import.meta.url), 'utf8');
@@ -20,4 +20,4 @@ await writeFile(new URL('app.js', output), app);
 await writeFile(new URL('index.html', output), html);
 await writeFile(new URL('.nojekyll', output), '');
 await writeFile(new URL('style.css', output), (await readFile(new URL('style.css', output), 'utf8')) + '\n.public-edition{font:9px/1.8 var(--mono);color:var(--muted);max-width:400px;margin-top:18px}.public-edition a{color:var(--green);text-underline-offset:4px}\n');
-console.log('Built public archive demo in public-dist/.');
+console.log('Built public archive demo in dist/.');
