@@ -1,7 +1,11 @@
 dist/
 public-dist/
+.vercel/
+vercel-demo/
+public-preview.png
 .env
 *.log
 
 preview.png
 creepy-preview.png
+.vercel

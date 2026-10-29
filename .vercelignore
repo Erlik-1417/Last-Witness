@@ -1,0 +1,9 @@
+.git
+.openai
+.vercel
+dist
+public-dist
+node_modules
+*.png
+*.log
+.env*
