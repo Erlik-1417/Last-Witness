@@ -15,7 +15,7 @@ let html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
 html = html.replace('href="/style.css"', 'href="./style.css"').replace('src="/app.js"', 'src="./app.js"').replace('href="/"', 'href="./"');
 html = html.replace('<title>Last Witness — A Bellwether Recording</title>', '<title>Last Witness — Public Demo</title>');
 html = html.replace('Local inference keeps the conversation on your computer. The archive edition uses keyword matching and the same handwritten story; it does not use AI.', 'Public demo: the complete archive edition, using keyword matching without AI inference. Your progress stays in this browser. The local Qwen edition is available in the GitHub repository.');
-html = html.replace('<p class="duration">', '<p class="public-edition">PUBLIC DEMO · ARCHIVE EDITION · <a href="https://github.com/Erlik-1417/lastwitness" target="_blank" rel="noopener noreferrer">SOURCE & LOCAL AI EDITION ↗</a></p><p class="duration">');
+html = html.replace('<p class="duration">', '<p class="public-edition">PUBLIC DEMO · ARCHIVE EDITION · <a href="https://github.com/Erlik-1417/Last-Witness" target="_blank" rel="noopener noreferrer">SOURCE & LOCAL AI EDITION ↗</a></p><p class="duration">');
 await writeFile(new URL('app.js', output), app);
 await writeFile(new URL('index.html', output), html);
 await writeFile(new URL('.nojekyll', output), '');
